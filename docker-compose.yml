@@ -1,0 +1,13 @@
+version: '3.7'
+services:
+  postgres_db:
+    image: postgres:13
+    restart: always
+    environment:
+      POSTGRES_DB: postgres
+      POSTGRES_USER: feyza
+      POSTGRES_PASSWORD: KDLx5kQ1xt
+    volumes:
+      - ./database:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"

@@ -1,11 +1,12 @@
 import { Module, MiddlewareConsumer, NestModule } from '@nestjs/common';
-import { UserController } from '../controllers/user.controller';
-import { AppService } from '../service/app';
 import { Auth } from '../middleware/auth'
+import { UsersService } from 'src/users/users.service';
+import { UsersController } from 'src/users/users.controller';
+import { UsersModule } from 'src/users/users.module';
 
 @Module({
-  imports: [],
-  controllers: [UserController],
+  imports: [UsersModule],
+  controllers: [],
   providers: [],
 })
 export class AppModule implements NestModule {

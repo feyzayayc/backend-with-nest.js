@@ -1,0 +1,29 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = "postgresql://feyza:KDLx5kQ1xt@localhost:5434/postgres?schema=public"
+}
+
+model users {
+  id         String    @id @default(uuid())
+  name       String    @db.VarChar(50)
+  password   String    @db.VarChar(100)
+  username   String    @unique @db.VarChar(45)
+  email      String    @unique @db.VarChar(45)
+  created_at DateTime  @default(now())
+  updated_at DateTime  @updatedAt
+  deleted_at DateTime?
+  posts      posts[]
+}
+
+model posts {
+  id         String   @id @default(uuid())
+  text       String   @db.VarChar(140)
+  user_id    String
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+  users      users    @relation(fields: [user_id], references: [id], onUpdate: Restrict, map: "fk_users_posts")
+}

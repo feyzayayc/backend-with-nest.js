@@ -1,6 +1,6 @@
 import { IsEmail, IsNotEmpty, IsString, Length } from "class-validator"
 
-export class Signup {
+export class Register {
   @IsEmail()
   @IsNotEmpty()
   email: string
@@ -22,7 +22,7 @@ export class Signup {
 
 }
 
-export class Signin {
+export class Login {
   @IsEmail()
   @IsNotEmpty()
   email: string

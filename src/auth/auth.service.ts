@@ -1,12 +1,12 @@
 import { BadRequestException, ForbiddenException, Injectable } from "@nestjs/common";
-import { DatabaseService } from "src/database/database.service";
+import { PrismaService } from "src/prisma/prisma.service";
 import { Register, Login } from "./dto";
 import * as argon from 'argon2'
 import { PrismaClientKnownRequestError } from "@prisma/client/runtime/library";
 
 @Injectable()
 export class AuthService {
-  constructor(private prisma: DatabaseService) { }
+  constructor(private prisma: PrismaService) { }
 
   async register(dto: Register) {
     try {
